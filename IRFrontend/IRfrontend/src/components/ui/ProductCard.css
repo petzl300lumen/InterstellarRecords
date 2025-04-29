@@ -1,0 +1,64 @@
+.ProductCardImg{
+    border-radius: 2px;
+    width: 209px;
+    height: 209px;
+    display: block;
+    margin: auto;
+
+}
+
+/* Возможно придется заменить */
+.buttonCardCart{
+    color: #B4FED9;
+    background-color: black;
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-family: Unbounded;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+
+}
+
+.productCard{
+    padding-top: 32px;
+    width: 281px;
+    padding-bottom: 25px;
+    height: 420px;
+    border-radius: 20px;
+    background: linear-gradient(0deg,rgba(255, 255, 255, 0.67) 21%, rgba(255, 255, 255, 0.29) 100%);;
+    /* box-shadow: 0px 12px 30px 2px rgb(0, 0, 0, 0.3); */
+}
+
+.titleProductCard{
+    color: #3E01FF;
+    text-align: center;
+    width: 195px;
+    margin: 0;
+    display: block;
+    margin: auto;
+    margin-top:10px;
+    font-family: 'Unbounded-SemiBold';
+}
+.titleProductCard a{
+    color: #3E01FF;
+    font-size: 15px;
+
+}
+.priceProductCard{
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top: 6px;
+}
+.dateProductCard{
+    color: black;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top: 6px;
+}

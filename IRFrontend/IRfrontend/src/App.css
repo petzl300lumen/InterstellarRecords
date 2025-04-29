@@ -1,0 +1,49 @@
+.body{
+  margin: 0;
+}
+
+.BACKGROUND {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 953px;
+
+background-color:hsla(359,100%,16%,1);
+background-image:
+radial-gradient(at 37% 0%, hsla(0,0%,0%,1) 0px, transparent 50%),
+radial-gradient(at 83% 25%, hsla(165,100%,12%,1) 0px, transparent 50%),
+radial-gradient(at 80% 57%, hsla(227,100%,15%,1) 0px, transparent 50%),
+radial-gradient(at 46% 43%, hsla(359,100%,25%,1) 0px, transparent 50%),
+radial-gradient(at 9% 55%, hsla(240,85%,14%,1) 0px, transparent 50%),
+radial-gradient(at 39% 79%, hsla(359,77%,28%,1) 0px, transparent 50%),
+radial-gradient(at 0% 0%, hsla(240,87%,4%,1) 0px, transparent 50%);
+background-repeat: no-repeat;
+background-position: center;
+
+animation: MyGradient 5s infinite linear;
+transition: background-color 0.5s linear;
+}
+
+@keyframes MyGradient {
+    0%{
+        background-color:hsla(1,100%,16%,1);
+    }
+    25%{
+        background-color:hsla(120,100%,16%,1);
+    }
+    50%{
+        background-color:hsla(193,100%,16%,1);
+    }
+    75%{
+        background-color:hsla(315,100%,16%,1);
+    }
+    100%{
+        background-color:hsla(1,100%,16%,1);
+    }
+
+}
+
+
+p {
+    color: white;
+}

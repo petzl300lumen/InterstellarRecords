@@ -1,0 +1,123 @@
+
+/* Бегущая строка */
+
+.stroka{
+    margin: 15px 0 15px 0;
+    color: #B4FED9;
+    font-size: 55px;
+    font-family: 'Unbounded-ExtraBold';
+    margin: 0;
+    font-size: calc(56px + 12 * (100vw - 1920px) / 640)
+}
+.stroke{
+    font-family: 'RubikMonoOne';
+    color: transparent;
+    -webkit-text-stroke: 1px #B4FED9;
+}
+
+.running-line {
+    margin: 60px 0 60px 0;
+    width: 100%; 
+    height: 87px; 
+    border: 2px solid #B4FED9;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.running-line .running_line_inner {
+    display: flex;
+    align-items: center;
+    font-size: calc(56px + 12 * (100vw - 1920px) / 640);
+    /* font-weight: 600; */
+    line-height: 111.765%;
+    letter-spacing: -0.68px;
+    /* color: #FBFBFB; */
+    position: relative;
+    white-space: nowrap;
+    animation-name: running;
+    animation-duration: 55s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes running {
+    0% {
+    transform: translate(100%, 0);
+}
+50% {
+    transform: translate(0, 0);
+}
+100% {
+    transform: translate(-100%, 0);
+}
+}
+
+.welcome{
+    /* width: 1161px; */
+    width: 1190px;
+    height: 524px;
+    background-color: white;
+    border-radius: 40px;
+    margin: auto;
+    margin-top:45px;
+    background-image: url(../../../public/Bckgndkatalog.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: flex;
+}
+
+.welcome-left{
+    width: 445px;
+    /* display: flex; */
+}
+
+.welcome-right{
+    width: 716px;
+}
+.bckrnd{
+    width: 709px;
+    padding-top: 164px;
+}
+
+.plastinka-div{
+    margin-left: 30px;
+    padding-top: 59px;
+}
+.welcome-title{
+    margin: 50px 0 0 58px;
+    width: 390px;
+    color: black;
+    font-size: 33px;
+    font-family: 'Unbounded-Black';
+}
+.welcome-title-span{
+    color: #B4FED9;
+    background-color: black;
+    padding: -10px;
+    background-size: 1px;
+}
+
+
+.tomainn{
+    background-color: black;
+    padding: 15px 18px;
+    border-radius: 15px;
+    width: 220px;
+    display: block;
+    margin: 0;
+    margin-top: 40px;
+    margin-left: 65px;
+
+}
+.tomainn a{
+    color: #B022EE;
+    text-decoration: none;
+    font-family: 'Unbounded-Medium';
+
+}

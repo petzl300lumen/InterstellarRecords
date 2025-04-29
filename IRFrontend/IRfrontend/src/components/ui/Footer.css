@@ -1,0 +1,35 @@
+.footer-main{
+    background-color: black;
+    width: 100%;
+    height: 222px;
+    margin-top: 211px;
+    display: flex;
+}
+.logo-footer{
+    margin: 37px 0 0 47px;
+}
+.copyright{
+    margin-left: 47px;
+    font-family: 'Unbounded-Light';
+    margin-top: 30px;
+}
+.right{
+    margin-left: auto;
+    margin-right: 140px;
+    margin-top: 37px;
+}
+.li-footer::before {
+    content: "⯌";
+    padding-right: 10px;
+}
+.li-footer a {
+    color: white;
+    font-family: 'Unbounded-Light';
+}
+.li-footer {
+    list-style-type: none;
+    margin-bottom: 7px;
+}
+.ul-footer{
+    color: white;
+}

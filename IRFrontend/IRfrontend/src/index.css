@@ -1,0 +1,41 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Unbounded';
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/Unbounded/static/Unbounded-Regular.ttf') format(truetype);
+}
+
+@font-face {
+  font-family: 'Unbounded-ExtraBold';
+  src: url('/fonts/Unbounded/static/Unbounded-ExtraBold.ttf') format(truetype);
+}
+
+@font-face {
+  font-family: 'Unbounded-Black';
+  src: url('/fonts/Unbounded/static/Unbounded-Black.ttf') format(truetype);
+}
+
+@font-face {
+  font-family: 'Unbounded-Medium';
+  src: url('/fonts/Unbounded/static/Unbounded-Medium.ttf') format(truetype);
+}
+
+@font-face {
+  font-family: 'Unbounded-Light';
+  src: url('/fonts/Unbounded/static/Unbounded-Light.ttf') format(truetype);
+}
+@font-face {
+  font-family: 'Unbounded-SemiBold';
+  src: url('/fonts/Unbounded/static/Unbounded-SemiBold.ttf') format(truetype);
+}
+@font-face {
+  font-family: 'RubikMonoOne';
+  src: url('/fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf') format(truetype);
+}

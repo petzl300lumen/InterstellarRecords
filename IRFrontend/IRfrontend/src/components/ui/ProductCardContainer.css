@@ -1,0 +1,21 @@
+.ProductCartContainer{
+    width: 1500px;
+    margin: auto;
+}
+
+.slick-prev::before{
+    content: "⟵";
+    font-size: 35px;
+}
+.slick-next::before{
+    content: "⟶";
+    font-size: 35px;
+}
+.slick-prev{
+    left: 630px;
+    top: 444px;
+}
+.slick-next{
+    top: 444px;
+    right: 775px;
+}
