@@ -1,7 +1,7 @@
 .ProductCardImg{
     border-radius: 2px;
-    width: 209px;
-    height: 209px;
+    width: 200px;
+    height: 200px;
     display: block;
     margin: auto;
 
@@ -25,21 +25,25 @@
     padding-top: 32px;
     width: 281px;
     padding-bottom: 25px;
-    height: 420px;
+    height: 430px;
     border-radius: 20px;
     background: linear-gradient(0deg,rgba(255, 255, 255, 0.67) 21%, rgba(255, 255, 255, 0.29) 100%);;
     /* box-shadow: 0px 12px 30px 2px rgb(0, 0, 0, 0.3); */
 }
 
+
+
 .titleProductCard{
     color: #3E01FF;
     text-align: center;
-    width: 195px;
+    width: 220px;
     margin: 0;
     display: block;
     margin: auto;
     margin-top:10px;
     font-family: 'Unbounded-SemiBold';
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.242);
+
 }
 .titleProductCard a{
     color: #3E01FF;

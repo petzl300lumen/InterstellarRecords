@@ -2,27 +2,38 @@ import React, { useEffect, useState } from 'react';
 import api from '../logic/api';
 import './Main.css'
 import plastinka from '/Plastinka.svg';
-
 import { Link } from 'react-router-dom';
-import ProductCard from './ProductCard';
 import ProductCardContainer from './ProductCardContainer';
+import ArtistsContainer from './ArtistsContainer';
+import Artists from './Artists';
 
 
 export default function Main() {
 
-
+// данные о продуктах с сервера
   const [products, setProducts] = useState([]);
   useEffect(function(){
       api.get("products")
       .then(res =>{
-          console.log(res.data)
+          // console.log(res.data)
           setProducts(res.data)
       })
       .catch(err => {
           console.log(err.message)
       })
   }, [])
-
+  const [artists, setArtists] = useState([]);
+useEffect(function(){
+  api.get("artists")
+  .then(res =>{
+    console.log(res.data)
+    setArtists(res.data)
+  })
+  .catch(err => {
+    console.log(err.message)
+  })
+}, [])
+  
 
   return (
     <div>
@@ -41,8 +52,8 @@ export default function Main() {
         </div>
       </div>
 
-  <div class="running-line">
-  <div class="running_line_inner">
+  <div className="running-line">
+  <div className="running_line_inner">
         <p className='stroka' >
         Новые релизы ⯌ <span className='stroke'>Новые релизы ⯌ </span>
         Новые релизы ⯌ <span className='stroke'>Новые релизы ⯌ </span>
@@ -65,11 +76,15 @@ export default function Main() {
 </div>
   </div>
 
-  <div className="products">
+    <div className="products">
         <ProductCardContainer products = {products} />
-        </div>
+    </div>
 
-      
+    <div className="artists">
+      {/* <ArtistsContainer artists = {artists} /> */}
+      <Artists artists = {artists} />
+    </div>
+
     </div>
   )
 }

@@ -4,12 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import './ProductCardContainer.css';
-import nazad from '../../../public/nazad.svg';
-
 
 export default function ProductCardContainer({products}) {
-
-
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -20,8 +16,6 @@ export default function ProductCardContainer({products}) {
       />
     );
   }
-
-
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -32,9 +26,6 @@ export default function ProductCardContainer({products}) {
       />
     );
   }
-
-
-
   const settings = {
     dots: false,
     infinite: true,
@@ -43,17 +34,19 @@ export default function ProductCardContainer({products}) {
     autoplay: true,
     pauseOnHover: true,
     speed: 1000,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 5000,
     rtl: true,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />, 
-  
-  }
+  };
+  const sortedProducts = products.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  const releases = sortedProducts.slice(0, 8);
   return (
     <div className='ProductCartContainer'>
         <Slider {...settings} className='SlickSlider'>
-        {products.map(product => <ProductCard key={product.id} product={product} />)}
+        {releases.map((product) => (<ProductCard key={product.id} product={product} />))}
+        {/* {products.map(product => <ProductCard key={product.id} product={product} />)} */}
         </Slider>
     </div>
   )

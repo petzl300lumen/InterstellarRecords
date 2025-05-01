@@ -1,21 +1,24 @@
 .ProductCartContainer{
     width: 1500px;
     margin: auto;
+    margin-bottom: 162px;
 }
 
 .slick-prev::before{
-    content: "⟵";
+    /* "⟵" */
+    content: url(../../../public/nazad.svg);
     font-size: 35px;
 }
 .slick-next::before{
-    content: "⟶";
+    /* "⟶" */
+    content: url(../../../public/vpered.svg);
     font-size: 35px;
 }
-.slick-prev{
-    left: 630px;
-    top: 444px;
+.artists-arr .slick-prev{
+    left: 397px;
+    top: 590px;
 }
-.slick-next{
-    top: 444px;
-    right: 775px;
+.artists-arr .slick-next{
+    top: 590px;
+    right: 630px;
 }
