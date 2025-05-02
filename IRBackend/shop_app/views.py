@@ -28,3 +28,9 @@ def category(request):
     category = Category.objects.all()
     serializer = CategorySerializer(category, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def product_detail(request, slug):
+    product = Products.objects.get(slug=slug)
+    serializer = DetailedProductSerializer(product)
+    return Response(serializer.data)

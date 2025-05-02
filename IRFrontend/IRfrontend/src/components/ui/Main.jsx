@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom';
 import ProductCardContainer from './ProductCardContainer';
 import ArtistsContainer from './ArtistsContainer';
 import Artists from './Artists';
+import Error from './Error';
+import GenreButton from './buttons/GenreButton';
 
 
 export default function Main() {
 
 // данные о продуктах с сервера
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState();
   useEffect(function(){
       api.get("products")
       .then(res =>{
@@ -20,6 +23,7 @@ export default function Main() {
       })
       .catch(err => {
           console.log(err.message)
+          setError(err.message)
       })
   }, [])
   const [artists, setArtists] = useState([]);
@@ -28,6 +32,7 @@ useEffect(function(){
   .then(res =>{
     console.log(res.data)
     setArtists(res.data)
+    setError("")
   })
   .catch(err => {
     console.log(err.message)
@@ -79,11 +84,13 @@ useEffect(function(){
     <div className="products">
         <ProductCardContainer products = {products} />
     </div>
-
+    {error && <Error error = {error} /> }
     <div className="artists">
       {/* <ArtistsContainer artists = {artists} /> */}
       <Artists artists = {artists} />
     </div>
+
+    <GenreButton />
 
     </div>
   )

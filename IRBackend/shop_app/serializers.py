@@ -23,3 +23,10 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = "__all__"
+        
+class DetailedProductSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
+    genre = serializers.StringRelatedField()
+    class Meta:
+        model = Products
+        fields = ["id", "title", "slug", "image", "descr", "price", "date", "category", "genre"] 

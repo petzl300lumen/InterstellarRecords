@@ -7,8 +7,8 @@ export default function ProductCard({product}) {
 
   return (
     <div className='productCard'>
-      <Link to='/details'><img src={`${BASE_URL}${product.image}`} alt="Картинка" className='ProductCardImg' /></Link>
-      <p className='titleProductCard'><Link to='/details'>{product.title} ({product.category})</Link></p>
+      <Link to={`products/${product.slug}`}><img src={`${BASE_URL}${product.image}`} alt="Картинка" className='ProductCardImg' /></Link>
+      <p className='titleProductCard'><Link to={`products/${product.slug}`}>{product.title} ({product.category})</Link></p>
       <p className="priceProductCard">{product.price} ₽</p>
       <p className="dateProductCard">{product.date}</p>
       {/* Возможно придется заменить */}

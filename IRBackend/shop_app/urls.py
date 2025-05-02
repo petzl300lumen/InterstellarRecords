@@ -9,4 +9,5 @@ urlpatterns = [
     re_path('artists', views.artists, name='artists'),
     re_path('genres', views.genres, name='genres'),
     re_path('category', views.category, name='category'),
+    path('product_detail/<slug:slug>', views.product_detail, name="product_detail"),
 ]
