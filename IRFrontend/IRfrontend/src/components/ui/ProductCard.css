@@ -14,12 +14,20 @@
     border: 0;
     border-radius: 12px;
     padding: 10px 24px;
-    font-family: Unbounded;
+    font-family: 'Unbounded';
     display: block;
     margin: auto;
     margin-top: 10px;
+    cursor: pointer;
 
 }
+
+.buttonCardCart:disabled{
+    transition: 0.4s;
+    opacity: 0.7;
+    cursor: default;
+}
+
 
 .productCard{
     padding-top: 32px;

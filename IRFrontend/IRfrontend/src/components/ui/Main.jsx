@@ -8,9 +8,11 @@ import ArtistsContainer from './ArtistsContainer';
 import Artists from './Artists';
 import Error from './Error';
 import GenreButton from './buttons/GenreButton';
+import CategotyButton from './buttons/CategotyButton';
+import { randomValue } from '../logic/GenerateCartCode';
 
 
-export default function Main() {
+export default function Main({setNumberCartItems}) {
 
 // данные о продуктах с сервера
   const [products, setProducts] = useState([]);
@@ -26,11 +28,12 @@ export default function Main() {
           setError(err.message)
       })
   }, [])
+
   const [artists, setArtists] = useState([]);
 useEffect(function(){
   api.get("artists")
   .then(res =>{
-    console.log(res.data)
+    // console.log(res.data)
     setArtists(res.data)
     setError("")
   })
@@ -38,7 +41,82 @@ useEffect(function(){
     console.log(err.message)
   })
 }, [])
-  
+
+const [genres, setGenres] = useState([]);
+
+useEffect(function(){
+    api.get("genres")
+    .then(res => {
+        // console.log(res.data)
+        setGenres(res.data)
+    })
+    .catch(err => {
+        console.log(err.message)
+    })
+}, [])
+
+const [categorys, setCategorys] = useState([]);
+
+useEffect(function(){
+    api.get("category")
+    .then(res => {
+        // console.log(res.data)
+        setCategorys(res.data)
+    })
+    .catch(err => {
+        console.log(err.message)
+    })
+}, [])
+
+
+  useEffect(function(){
+    if(localStorage.getItem("cart_code") === null){
+      localStorage.setItem("cart_code", randomValue)
+    }
+  }, [])
+
+  // добавление товара в коризину с карточки 
+  const [inCart, setInCart] = useState(false)
+
+
+  useEffect(() => {
+    const cart_code = localStorage.getItem("cart_code");
+    if (!cart_code || products.length === 0) return;
+
+    products.forEach((product) => {
+      api.get(`product_in_cart?cart_code=${cart_code}&product_id=${product.id}`)
+        .then(res => {
+          setInCart((prevState) => ({
+            ...prevState,
+            [product.id]: res.data.product_in_cart,
+          }));
+        })
+        .catch(err => {
+          console.log(err.message);
+        });
+    });
+  }, [products]);
+
+
+
+function add_item(productId){
+  const cart_code = localStorage.getItem("cart_code");
+  const newItem = {cart_code: cart_code, product_id: productId}
+    api.post("add_item/", newItem)
+    .then(res => {
+        console.log(res.data)
+        setInCart((prevState) => ({
+          ...prevState,
+          [productId]: true, 
+        }));
+        setNumberCartItems(curr => curr + 1 )
+    })
+    .catch(err => {
+        console.log(err.message)
+    } )
+}
+
+
 
   return (
     <div>
@@ -82,7 +160,15 @@ useEffect(function(){
   </div>
 
     <div className="products">
-        <ProductCardContainer products = {products} />
+
+
+
+
+        <ProductCardContainer products = {products} add_item={add_item} inCart={inCart} />
+
+
+
+
     </div>
     {error && <Error error = {error} /> }
     <div className="artists">
@@ -90,8 +176,15 @@ useEffect(function(){
       <Artists artists = {artists} />
     </div>
 
-    <GenreButton />
 
+    {/* Получение кнопок жанров 
+    { genres.map((genre) => (
+    <GenreButton key={genre.id} genre_prop={genre}/>
+    ))}
+    Получение кнопок категории
+    { categorys.map((category) => (
+      <CategotyButton key={category.id} category_prop={category} />
+    ))} */}
     </div>
   )
 }

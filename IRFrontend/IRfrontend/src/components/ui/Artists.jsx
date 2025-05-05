@@ -124,7 +124,7 @@ export default function Artists({artists}) {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}><div className='div-an'> <p className='p-an'>Порез на собаке</p></div></div>
-            <div className="secondslideChildren SSC5"style={{
+            <div className="secondslideChildren SSC5" style={{
                   backgroundImage: `url(${BASE_URL}${mrx[0]?.image || ''})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',

@@ -88,5 +88,67 @@ font-family: 'Unbounded-Medium';
 .header-li2{
     text-decoration: none;
     margin-right: 25px;
+    position: relative;
     /* margin-left: 5px; */
+}
+.span-header{
+    border-radius: 100%;
+    background-color: black;
+    color: #B4FED9;
+    padding: 5px 7px;
+
+    font-family: 'Unbounded-Light';
+    text-decoration: none;
+    position: absolute;
+    top: -14px;
+    left: 22px;
+
+}
+.span-header p{
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    color: #B4FED9;
+
+}
+.header-li2 a{
+    text-decoration: none;  
+}
+button {
+    color: 0;
+    background: 0; 
+}
+
+.pdrawer{
+    color: #3E01FF;
+
+}
+
+:where(.css-dev-only-do-not-override-1v5z42l).ant-drawer .ant-drawer-body{
+    padding: 0;
+    height: 100vh;
+    position:relative;
+    overflow: auto;
+}
+.ant-drawer-body{
+    height: 100vh;   
+    position:relative;
+    overflow: auto;
+}
+
+.subtotal{
+    box-shadow: 0 -3px 10px #0000001a;
+    width: 100%;
+    height: 200px;
+    position: sticky;
+    /* border: 2px dashed red; */
+    /* top: auto; */
+    bottom: 0;
+    z-index: 1000;
+    background-color: white;
+    /* margin: auto; */
+}
+h2 {
+    z-index: 5;
 }

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import './ProductCardContainer.css';
 
-export default function ProductCardContainer({products}) {
+export default function ProductCardContainer({products, add_item, inCart}) {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -45,7 +45,7 @@ export default function ProductCardContainer({products}) {
   return (
     <div className='ProductCartContainer'>
         <Slider {...settings} className='SlickSlider'>
-        {releases.map((product) => (<ProductCard key={product.id} product={product} />))}
+        {releases.map((product) => (<ProductCard key={product.id} product={product} add_item={add_item} inCart={inCart[product.id] || false} />))}
         {/* {products.map(product => <ProductCard key={product.id} product={product} />)} */}
         </Slider>
     </div>
