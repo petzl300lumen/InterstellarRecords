@@ -1,4 +1,4 @@
 # InterstellarRecords
 Дипломный проект - Fullstack веб-приложение Interstellar Records
-Выполнен на стэке:
+\n Выполнен на стэке:
 Бэкэнд - Python+Django, фронтенд: JS+React
