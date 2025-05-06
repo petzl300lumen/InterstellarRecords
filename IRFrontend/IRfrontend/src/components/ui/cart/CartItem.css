@@ -1,0 +1,31 @@
+.imageInCart{
+    width: 132px;
+    height: 132px;
+    margin-right: 25px;
+}
+.cartItem{
+    /* padding: 35px 45px 0 35px; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.488);
+    width: 624px;
+    margin: auto;
+    margin-top: 35px;
+    padding-bottom: 5px;
+    display: flex;
+}
+.p-infocart{
+    color: black;
+    margin: auto;
+}
+.deletebtn{
+    border: 0;
+    cursor: pointer;
+    margin-left: auto;
+}
+.p-infocart-title{
+    font-family: 'Unbounded-Medium';
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.p-infocart-price{
+    font-size: 13px;
+}

@@ -1,5 +1,5 @@
 
-  .header{
+.header{
     /* position: relative; */
     display: flex;
     margin: auto;
@@ -130,25 +130,70 @@ button {
     height: 100vh;
     position:relative;
     overflow: auto;
+
 }
 .ant-drawer-body{
     height: 100vh;   
     position:relative;
     overflow: auto;
+
 }
 
 .subtotal{
-    box-shadow: 0 -3px 10px #0000001a;
-    width: 100%;
-    height: 200px;
-    position: sticky;
+    box-shadow: 0 -3px 10px #00000018;
+    width: 736px;
+    height: 210px;
+    position: fixed;
     /* border: 2px dashed red; */
     /* top: auto; */
     bottom: 0;
     z-index: 1000;
     background-color: white;
+    padding: 35px;
     /* margin: auto; */
 }
-h2 {
-    z-index: 5;
+.subtotal-p-sum{
+color: black;
+font-family: 'Unbounded-Light';
+font-size: 20px;
+margin: 0;
+margin-bottom: 6px;
+}
+.subtotal-p-delivery{
+color: black;
+font-family: 'Unbounded-Light';
+font-size: 20px;
+margin: 0;
+margin-bottom: 6px;
+}
+.subtotal-p-total{
+color: #3E01FF;
+font-family: 'Unbounded-SemiBold';
+font-size: 20px;
+margin: 0;
+margin-bottom: 14px;
+}
+.btn-cart-pay{
+    width: 635px;
+    height: 55px;
+    border: 0;
+    border-radius: 10px;
+    background-color: black;
+    cursor: pointer;
+    color: #B4FED9;
+    font-family: 'Unbounded-Medium';
+    font-size: 17px;
+}
+.subtotal-p-price{
+    color: black;
+    font-size: 20px;
+    margin: 0;
+    margin-left: auto;
+
+}
+.subtotal-p{
+    display: flex;
+}
+.subtotal-p-price-total{
+    text-decoration: underline;
 }

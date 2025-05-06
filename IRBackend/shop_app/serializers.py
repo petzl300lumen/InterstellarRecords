@@ -31,11 +31,37 @@ class DetailedProductSerializer(serializers.ModelSerializer):
         model = Products
         fields = ["id", "title", "slug", "image", "descr", "price", "date", "category", "genre"] 
         
+        
+class CartItemSerializer(serializers.ModelSerializer):
+    product = ProductsSerializer(read_only=True)
+    total = ProductsSerializer(read_only=True)
+    # cart = CartSerializer(read_only=True) 
+    class Meta:
+        model = CartItem
+        # новые изменения здесь
+        fields = ["id", "quantity", "product", "total"]
+        # здесь
+    def get_total(self, cartitem):
+        price = cartitem.product.price * cartitem.quantity
+        return price
+        
 class CartSerializer(serializers.ModelSerializer):
+    items = CartItemSerializer(read_only=True, many=True)
+    sum_total = serializers.SerializerMethodField()
+    num_of_items = serializers.SerializerMethodField()
     class Meta: 
         model = Cart 
-        fields = ["id", "cart_code", "created_at", "modified_at"]
-        
+        fields = ["id", "cart_code", "items", "sum_total", "num_of_items", "created_at", "modified_at"]
+        # новые изменени здесь
+    def get_sum_total(self, cart):
+        items = cart.items.all()
+        total = sum([item.product.price * item.quantity for item in items])
+        return total
+    def get_num_of_items(self,cart):
+        items = cart.items.all() 
+        total = sum([item.quantity for item in items])
+        return total
+    
 class SimpleCartSerializer(serializers.ModelSerializer):
     num_of_items = serializers.SerializerMethodField()
     class Meta:
@@ -46,9 +72,3 @@ class SimpleCartSerializer(serializers.ModelSerializer):
         num_of_items = sum([item.quantity for item in cart.items.all()])
         return num_of_items
         
-class CartItemSerializer(serializers.ModelSerializer):
-    product = ProductsSerializer(read_only=True)
-    cart = CartSerializer(read_only=True)
-    class Meta:
-        model = CartItem
-        fields = ["id", "quantity", "product", "cart"]

@@ -22,7 +22,7 @@ class Products(models.Model):
     slug = models.SlugField(blank=True, null=True)
     image = models.ImageField(upload_to="img")
     descr = models.TextField(max_length=999)
-    price = models.CharField()
+    price = models.IntegerField()
     date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genres, on_delete=models.CASCADE)

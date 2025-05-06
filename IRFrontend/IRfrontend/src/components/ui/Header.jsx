@@ -5,8 +5,10 @@ import logo from '/logooo.svg';
 import cart from '/Cart.svg';
 import user from '/User.svg';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Drawer } from 'antd';
+import CartItem from './cart/CartItem';
+import api from '../logic/api';
 
 export default function Header({numCartItems}) {
 
@@ -18,6 +20,19 @@ export default function Header({numCartItems}) {
   const onClose = () => {
     setOpen(false);
   };
+
+  const cart_code = localStorage.getItem("cart_code"); 
+  const [cartitems, setCartItems] =useState([]);
+  useEffect(function(){
+    api.get(`get_cart?cart_code=${cart_code}`)
+    .then(res =>{
+      console.log(res.data)
+      setCartItems(res.data.items)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  }, [])
 
   return (
 <div className=''>
@@ -39,31 +54,15 @@ export default function Header({numCartItems}) {
           {numCartItems == 0 || <div className='span-header'><p>{numCartItems}</p></div>}
           </button>
           <Drawer title="Коризина" onClose={onClose} open={open} size={'large'} style={{fontFamily: 'Unbounded-Light'}}>
+          {cartitems.map(item =>  <CartItem key={item.id} item={item} />)}
+        {/* <CartItem /> */}
           
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>     
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
-            <h2>fvjofwapo</h2>
           
           <div className="subtotal">
-            
+            <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>200 ₽</p></div>
+            <div className="subtotal-p"><p className='subtotal-p-delivery'>Доставка:</p><p className='subtotal-p-price'>200 ₽</p></div>
+            <div className="subtotal-p"><p className='subtotal-p-total'>Итого:</p><p className='subtotal-p-price subtotal-p-price-total'>200 ₽</p></div>
+            <button className='btn-cart-pay'>Перейти к оплате</button>
           </div>
         </Drawer>
           </li>
