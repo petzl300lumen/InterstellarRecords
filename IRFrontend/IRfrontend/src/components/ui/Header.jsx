@@ -6,7 +6,7 @@ import cart from '/Cart.svg';
 import user from '/User.svg';
 
 import React, { useEffect, useState } from 'react';
-import { Button, Drawer } from 'antd';
+import { Drawer } from 'antd';
 import CartItem from './cart/CartItem';
 import api from '../logic/api';
 
@@ -23,16 +23,24 @@ export default function Header({numCartItems}) {
 
   const cart_code = localStorage.getItem("cart_code"); 
   const [cartitems, setCartItems] =useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+  const delivery = 500;
+  const total = cartTotal + delivery;
   useEffect(function(){
     api.get(`get_cart?cart_code=${cart_code}`)
     .then(res =>{
       console.log(res.data)
       setCartItems(res.data.items)
+      setCartTotal(res.data.sum_total)
     })
     .catch(err => {
       console.log(err.message)
     })
   }, [])
+
+  // if(cartitems.length< 1){
+  //   return (<span>Корзина пуста.</span>)
+  // }
 
   return (
 <div className=''>
@@ -53,15 +61,23 @@ export default function Header({numCartItems}) {
             <img src={cart} alt="cart" /> 
           {numCartItems == 0 || <div className='span-header'><p>{numCartItems}</p></div>}
           </button>
-          <Drawer title="Коризина" onClose={onClose} open={open} size={'large'} style={{fontFamily: 'Unbounded-Light'}}>
-          {cartitems.map(item =>  <CartItem key={item.id} item={item} />)}
+          <Drawer
+           title="Коризина" 
+           onClose={onClose} 
+           open={open} 
+           size={'large'} 
+           style={{fontFamily: 'Unbounded-Light'}}
+           >
+          {cartitems.length > 0 ? (<div className='cart-items-container'>{cartitems.map(item => 
+             <CartItem key={item.id} item={item} setCartItems={setCartItems} cartitems={cartitems} setCartTotal={setCartTotal} />
+             )}</div>) : (<p className='emptycart-p'>Корзина пуста.</p>)}
         {/* <CartItem /> */}
           
           
           <div className="subtotal">
-            <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>200 ₽</p></div>
-            <div className="subtotal-p"><p className='subtotal-p-delivery'>Доставка:</p><p className='subtotal-p-price'>200 ₽</p></div>
-            <div className="subtotal-p"><p className='subtotal-p-total'>Итого:</p><p className='subtotal-p-price subtotal-p-price-total'>200 ₽</p></div>
+            <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>{cartTotal} ₽</p></div>
+            <div className="subtotal-p"><p className='subtotal-p-delivery'>Доставка:</p><p className='subtotal-p-price'>{delivery} ₽</p></div>
+            <div className="subtotal-p"><p className='subtotal-p-total'>Итого:</p><p className='subtotal-p-price subtotal-p-price-total'>{total} ₽</p></div>
             <button className='btn-cart-pay'>Перейти к оплате</button>
           </div>
         </Drawer>

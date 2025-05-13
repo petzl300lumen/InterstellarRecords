@@ -130,12 +130,14 @@ button {
     height: 100vh;
     position:relative;
     overflow: auto;
+    /* max-height: calc(100vh - 55px); */
 
 }
 .ant-drawer-body{
     height: 100vh;   
     position:relative;
     overflow: auto;
+    /* max-height: calc(100vh - 55px); */
 
 }
 
@@ -196,4 +198,9 @@ margin-bottom: 14px;
 }
 .subtotal-p-price-total{
     text-decoration: underline;
+}
+.cart-items-container {
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    max-height: calc(100vh - 300px); /* Ограничиваем высоту контейнера */
+    padding-bottom: 100px; /* Отступ для блока .subtotal */
 }

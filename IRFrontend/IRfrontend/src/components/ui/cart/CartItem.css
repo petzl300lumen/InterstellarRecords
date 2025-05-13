@@ -19,13 +19,30 @@
 .deletebtn{
     border: 0;
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 20px;
 }
 .p-infocart-title{
     font-family: 'Unbounded-Medium';
     font-size: 15px;
     margin-bottom: 15px;
+    width: 350px;
 }
 .p-infocart-price{
     font-size: 13px;
+}
+.delete-update{
+    margin-left: auto;
+    margin-top: 34px
+}
+.inputQuantity{
+    height: 30px;
+    width: 60px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.emptycart-p{
+    margin: 50px 0 0 269px;
+    color: rgba(0, 0, 0, 0.415);
+    font-size: 20px;
 }
