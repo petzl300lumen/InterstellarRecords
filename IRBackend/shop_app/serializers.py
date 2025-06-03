@@ -34,7 +34,7 @@ class DetailedProductSerializer(serializers.ModelSerializer):
         
 class CartItemSerializer(serializers.ModelSerializer):
     product = ProductsSerializer(read_only=True)
-    total = ProductsSerializer(read_only=True)
+    total = serializers.SerializerMethodField()
     # cart = CartSerializer(read_only=True) 
     class Meta:
         model = CartItem

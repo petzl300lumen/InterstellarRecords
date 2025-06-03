@@ -5,7 +5,7 @@ import './CartItem.css';
 import api, { BASE_URL } from '../../logic/api';
 
 
-export default function CartItem({item, setCartItems, cartitems, setCartTotal}) {
+export default function CartItem({item, setCartItems, cartitems, setCartTotal, cartTotal, setNumberCartItems}) {
 
   const [quantity, setQuantity] = useState(item.quantity)
 
@@ -15,41 +15,19 @@ export default function CartItem({item, setCartItems, cartitems, setCartTotal}) 
   function deleteCartItem(){
     const confirmDelete = window.confirm("Удалить данный товар из корзины?")
     if(confirmDelete){
-
       api.post("delete_cartitem/", itemID)
       .then(res => {
-        console.log(res.data);
+        setCartItems(cartitems.filter(cartitem => cartitem.id != item.id));
 
-        // Обновляем состояние корзины на основе данных с сервера
-        api.get(`get_cart?cart_code=${localStorage.getItem("cart_code")}`)
-          .then(cartRes => {
-            setCartItems(cartRes.data.items || []); // Обновляем товары в корзине
-            setCartTotal(cartRes.data.sum_total || 0); // Обновляем итоговую сумму
-          })
-          .catch(err => {
-            console.error("Ошибка при обновлении корзины:", err.message);
-          });
+        setCartTotal(cartitems.filter((cartitem) => cartitem.id != item.id )
+        .reduce((acc, curr)=> acc + curr.total, 0))
+        
+        setNumberCartItems(cartitems.filter((cartitem) => cartitem.id != item.id)
+      .reduce((acc, curr) => acc + curr.quantity, 0))
       })
-      .catch(err => {
-        console.error("Ошибка при удалении товара:", err.message);
-      });
-
-
-
-      // api.post("delete_cartitem/", itemID)
-      // .then(res => {
-      //   console.log(res.data);
-      //   const updatedCartItems = cartitems.filter(cartitem => cartitem.id !== item.id);
-      //   setCartItems(updatedCartItems);
-      //   const newTotal = updatedCartItems.reduce((acc, curr) => acc + (curr.total || 0), 0);
-      //   setCartTotal(newTotal);  
-      // //   setCartItems(cartitems.filter(cartitem => cartitem.id != item.id))
-      // //   setCartTotal(cartitems.filter((cartitem) => cartitem.id != item.id)
-      // // .reduce((acc, curr) => acc + curr.total, 0))
-      // })
-      // .catch(err =>{
-      //   console.log(err.message);
-      // })
+      .catch(err =>{
+        console.log(err.message);
+      })
     }
   }
 
@@ -57,6 +35,11 @@ export default function CartItem({item, setCartItems, cartitems, setCartTotal}) 
     api.patch("upadate_quantity/", itemData)
     .then(res => {
       console.log(res.data)
+      setCartTotal(cartitems.map((cartitem) => cartitem.id === item.id ? res.data.data : cartitem)
+      .reduce((acc, curr)=> acc + curr.total, 0))
+      
+      setNumberCartItems(cartitems.map((cartitem) => cartitem.id === item.id ? res.data.data : cartitem)
+    .reduce((acc, curr) => acc + curr.quantity, 0))
     })
     .catch(err => {
       console.log(err.message)
@@ -80,3 +63,19 @@ export default function CartItem({item, setCartItems, cartitems, setCartTotal}) 
     </div>
   )
 }
+
+      // api.post("delete_cartitem/", itemID)
+      // .then(res => {
+      //   // Обновляем состояние корзины на основе данных с сервера
+      //   api.get(`get_cart?cart_code=${localStorage.getItem("cart_code")}`)
+      //     .then(cartRes => {
+      //       setCartItems(cartRes.data.items || []); // Обновляем товары в корзине
+      //       setCartTotal(cartRes.data.sum_total || 0); // Обновляем итоговую сумму
+      //     })
+      //     .catch(err => {
+      //       console.error("Ошибка при обновлении корзины:", err.message);
+      //     });
+      // })
+      // .catch(err => {
+      //   console.error("Ошибка при удалении товара:", err.message);
+      // });

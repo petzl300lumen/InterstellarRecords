@@ -33,7 +33,8 @@ export default function ProductDetail({setNumberCartItems}) {
             console.log(res.data)
             setInCart(true)
             setNumberCartItems(curr => curr + 1 )
-            updateCartState();
+            // updateCartState();
+        
         })
         .catch(err => {
             console.log(err.message)

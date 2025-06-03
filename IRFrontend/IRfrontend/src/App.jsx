@@ -10,6 +10,7 @@ import Footer from './components/ui/Footer';
 import ProductDetail from './components/ui/ProductDetail/ProductDetail';
 import GenreButton from './components/ui/buttons/GenreButton';
 import api from './components/logic/api';
+import CheckoutPage from './components/ui/checkout/CheckoutPage';
 
 function App() {
 
@@ -30,10 +31,12 @@ function App() {
     
   }, [])
 
+
+
   return (
 <div className='BACKGROUND'>
          
-<Header numCartItems={numCartItems} />
+<Header numCartItems={numCartItems} setNumberCartItems={setNumberCartItems} />
 <Routes>
     <Route path='/' element={<Main setNumberCartItems={setNumberCartItems}/>}></Route>
     <Route path='/catalog' element={<Catalog setNumberCartItems={setNumberCartItems}/>}></Route>
@@ -41,6 +44,8 @@ function App() {
     <Route path='/contacts' element={<Contacts />}></Route>
     <Route path='/products/:slug' element={<ProductDetail setNumberCartItems={setNumberCartItems} />}></Route>
     <Route path='*' element={<NotF404 />}></Route>
+
+    <Route path='/checkout' element={<CheckoutPage />}></Route>
 </Routes>
 
 

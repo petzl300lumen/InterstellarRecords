@@ -10,7 +10,7 @@ import { Drawer } from 'antd';
 import CartItem from './cart/CartItem';
 import api from '../logic/api';
 
-export default function Header({numCartItems}) {
+export default function Header({numCartItems, setNumberCartItems}) {
 
 
   const [open, setOpen] = useState(false);
@@ -26,10 +26,11 @@ export default function Header({numCartItems}) {
   const [cartTotal, setCartTotal] = useState(0);
   const delivery = 500;
   const total = cartTotal + delivery;
+
+
   useEffect(function(){
     api.get(`get_cart?cart_code=${cart_code}`)
     .then(res =>{
-      console.log(res.data)
       setCartItems(res.data.items)
       setCartTotal(res.data.sum_total)
     })
@@ -37,6 +38,22 @@ export default function Header({numCartItems}) {
       console.log(err.message)
     })
   }, [])
+
+  // function updateCartState(){
+  //   useEffect(function(){
+  //     api.get(`get_cart?cart_code=${cart_code}`)
+  //     .then(res =>{
+  //       setCartItems(res.data.items)
+  //       setCartTotal(res.data.sum_total)
+  //     })
+  //     .catch(err => {
+  //       console.log(err.message)
+  //     })
+  //   }, [])
+  // }
+  
+
+  
 
   // if(cartitems.length< 1){
   //   return (<span>Корзина пуста.</span>)
@@ -69,7 +86,15 @@ export default function Header({numCartItems}) {
            style={{fontFamily: 'Unbounded-Light'}}
            >
           {cartitems.length > 0 ? (<div className='cart-items-container'>{cartitems.map(item => 
-             <CartItem key={item.id} item={item} setCartItems={setCartItems} cartitems={cartitems} setCartTotal={setCartTotal} />
+             <CartItem 
+             key={item.id} 
+             item={item} 
+             setCartItems={setCartItems} 
+             cartitems={cartitems} 
+             setCartTotal={setCartTotal}
+             cartTotal = {cartTotal} 
+             setNumberCartItems = {setNumberCartItems}
+             />
              )}</div>) : (<p className='emptycart-p'>Корзина пуста.</p>)}
         {/* <CartItem /> */}
           
