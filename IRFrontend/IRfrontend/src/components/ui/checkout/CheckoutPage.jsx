@@ -1,8 +1,12 @@
 import React from 'react';
 import './CheckoutPage.css';
 import OrderItem from './OrderItem';
+import useCartData from '../../../hooks/useCartData';
 
 export default function CheckoutPage() {
+
+    const {cartitems, setCartItems, cartTotal, setCartTotal, total, delivery} = useCartData();
+
   return (
     <div className='order-main'>
         
@@ -49,6 +53,8 @@ export default function CheckoutPage() {
                         </div>
                         <label htmlFor="" className='mini-label'>Адрес <span className='spanst'>*</span></label>
                         <input type="text" className='order-inputs order-inputs-large '/>
+                        <label htmlFor="" className='mini-label'>Комментарий к заказу</label>
+                        <input type="text" className='order-inputs order-inputs-large '/>
 
                     </div>
                     <div className='pay-info' style={{width: 500}}>
@@ -74,15 +80,14 @@ export default function CheckoutPage() {
 
 <div className="order-right">
         <div className='container'>
-            <OrderItem />
-            <OrderItem />
-            <OrderItem />
-            <OrderItem />
+            
+            { cartitems.map((cartitem) => <OrderItem key={cartitem.id} cartitem={cartitem} />) }
+
         </div>
         <div className="subtotal-order">
-            <div className="subtotal-order-p"><p className='subtotal-order-p-sum'>Товаров на сумму:</p><p className='subtotal-order-p-price'>1000 ₽</p></div>
-            <div className="subtotal-order-p"><p className='subtotal-order-p-delivery'>Доставка:</p><p className='subtotal-order-p-price'>500 ₽</p></div>
-            <div className="subtotal-order-p"><p className='subtotal-order-p-total'>Итого:</p><p className='subtotal-order-p-price subtotal-order-p-price-total'>1500 ₽</p></div>
+            <div className="subtotal-order-p"><p className='subtotal-order-p-sum'>Товаров на сумму:</p><p className='subtotal-order-p-price'>{cartTotal} ₽</p></div>
+            <div className="subtotal-order-p"><p className='subtotal-order-p-delivery'>Доставка:</p><p className='subtotal-order-p-price'>{delivery} ₽</p></div>
+            <div className="subtotal-order-p"><p className='subtotal-order-p-total'>Итого:</p><p className='subtotal-order-p-price subtotal-order-p-price-total'>{total} ₽</p></div>
             <button className='order-btn-cart-pay'>Оформить заказ</button>
           </div>
 </div>

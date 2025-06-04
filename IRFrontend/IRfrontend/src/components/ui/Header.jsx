@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 import { Drawer } from 'antd';
 import CartItem from './cart/CartItem';
 import api from '../logic/api';
+import useCartData from '../../hooks/useCartData';
 
 export default function Header({numCartItems, setNumberCartItems}) {
 
@@ -21,23 +22,7 @@ export default function Header({numCartItems, setNumberCartItems}) {
     setOpen(false);
   };
 
-  const cart_code = localStorage.getItem("cart_code"); 
-  const [cartitems, setCartItems] =useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
-  const delivery = 500;
-  const total = cartTotal + delivery;
-
-
-  useEffect(function(){
-    api.get(`get_cart?cart_code=${cart_code}`)
-    .then(res =>{
-      setCartItems(res.data.items)
-      setCartTotal(res.data.sum_total)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-  }, [])
+  const {cartitems, setCartItems, cartTotal, setCartTotal, total, delivery} = useCartData();
 
   // function updateCartState(){
   //   useEffect(function(){
@@ -103,7 +88,7 @@ export default function Header({numCartItems, setNumberCartItems}) {
             <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>{cartTotal} ₽</p></div>
             <div className="subtotal-p"><p className='subtotal-p-delivery'>Доставка:</p><p className='subtotal-p-price'>{delivery} ₽</p></div>
             <div className="subtotal-p"><p className='subtotal-p-total'>Итого:</p><p className='subtotal-p-price subtotal-p-price-total'>{total} ₽</p></div>
-            <button className='btn-cart-pay'>Перейти к оплате</button>
+            <Link to='/checkout'><button onClick={() => {onClose(); }} className='btn-cart-pay'>Перейти к оплате</button></Link>
           </div>
         </Drawer>
           </li>

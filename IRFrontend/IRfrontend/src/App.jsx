@@ -11,6 +11,8 @@ import ProductDetail from './components/ui/ProductDetail/ProductDetail';
 import GenreButton from './components/ui/buttons/GenreButton';
 import api from './components/logic/api';
 import CheckoutPage from './components/ui/checkout/CheckoutPage';
+import RegistrationPage from './components/ui/authentication/RegistrationPage';
+import AuthorizationPage from './components/ui/authentication/AuthorizationPage';
 
 function App() {
 
@@ -44,8 +46,9 @@ function App() {
     <Route path='/contacts' element={<Contacts />}></Route>
     <Route path='/products/:slug' element={<ProductDetail setNumberCartItems={setNumberCartItems} />}></Route>
     <Route path='*' element={<NotF404 />}></Route>
-
     <Route path='/checkout' element={<CheckoutPage />}></Route>
+    <Route path='/registration' element={<RegistrationPage />}></Route>
+    <Route path='/authorization' element={<AuthorizationPage />}></Route>
 </Routes>
 
 

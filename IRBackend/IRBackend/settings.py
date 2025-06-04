@@ -67,6 +67,16 @@ CORS_ALLOWED_ORIGINS = [
                 "http://localhost:5175",
     ]
 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+
+
 ROOT_URLCONF = 'IRBackend.urls'
 
 TEMPLATES = [
@@ -143,3 +153,5 @@ AUTH_USER_MODEL = 'core.CustomUser'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
