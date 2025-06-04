@@ -55,3 +55,9 @@
     margin: auto;
     margin-top: 32px;
 }
+
+.auth-btn:disabled{
+    transition: 0.3s;
+    opacity: 0.7;
+    cursor: default;
+}

@@ -5,14 +5,21 @@ import logo from '/logooo.svg';
 import cart from '/Cart.svg';
 import user from '/User.svg';
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Drawer } from 'antd';
 import CartItem from './cart/CartItem';
 import api from '../logic/api';
 import useCartData from '../../hooks/useCartData';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Header({numCartItems, setNumberCartItems}) {
 
+  const { isAuthenticated, setIsAuthenticated} = useContext( AuthContext )
+
+  function logout(){
+    localStorage.removeItem("access")
+    setIsAuthenticated(false)
+}
 
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -37,9 +44,6 @@ export default function Header({numCartItems, setNumberCartItems}) {
   //   }, [])
   // }
   
-
-  
-
   // if(cartitems.length< 1){
   //   return (<span>Корзина пуста.</span>)
   // }
@@ -56,9 +60,19 @@ export default function Header({numCartItems, setNumberCartItems}) {
             <li className='header-li'><Link to="/contacts">Контакты</Link></li>
         </ul>
         <ul className='header-ul2'>
-          <li className="liauth"><Link to="/authorization">Войти</Link></li>
-          <li className="liauth"><Link to="/registration">Регистрация</Link></li>
-          <li className="header-li2">
+          
+
+          {isAuthenticated ? (<> 
+          <li className="header-li2"><Link to="/profile"><img src={user} alt="user" /></Link></li>
+          <li className="header-li-exit" onClick={logout}><Link to="/">Выйти</Link></li> </>)
+            :
+            (<>
+              <li className="liauth"><Link to="/authorization">Войти</Link></li>
+              <li className="liauth"><Link to="/registration">Регистрация</Link></li>
+            </>)
+        }
+
+<li className="header-li2 cart-li">
           <button onClick={showDrawer} style={{ all: 'unset', cursor: 'pointer' }}>
             <img src={cart} alt="cart" /> 
           {numCartItems == 0 || <div className='span-header'><p>{numCartItems}</p></div>}
@@ -81,8 +95,6 @@ export default function Header({numCartItems, setNumberCartItems}) {
              setNumberCartItems = {setNumberCartItems}
              />
              )}</div>) : (<p className='emptycart-p'>Корзина пуста.</p>)}
-        {/* <CartItem /> */}
-          
           
           <div className="subtotal">
             <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>{cartTotal} ₽</p></div>
@@ -91,10 +103,8 @@ export default function Header({numCartItems, setNumberCartItems}) {
             <Link to='/checkout'><button onClick={() => {onClose(); }} className='btn-cart-pay'>Перейти к оплате</button></Link>
           </div>
         </Drawer>
-          </li>
+          </li>  
           
-          {/* Иконка пользователя рендеристся условно, смотреть тутор */}
-          <li className="header-li2"><Link to="/profile"><img src={user} alt="user" /></Link></li>
         </ul>
         
         

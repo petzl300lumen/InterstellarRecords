@@ -91,7 +91,7 @@ transition: 0.4s;
 } 
 .header-li2{
     text-decoration: none;
-    margin-right: 25px;
+    margin-right: 12px;
     position: relative;
     /* margin-left: 5px; */
 }
@@ -209,3 +209,19 @@ margin-bottom: 14px;
     padding-bottom: 100px; /* Отступ для блока .subtotal */
 }
 
+.header-li-exit a{
+color: white;
+font-family: "Unbounded-Light";
+font-size: 13px;
+width: 10px;
+opacity: 0.8;
+height: 20px;
+}
+.header-li-exit{
+width: 70px;
+height: 20px;
+padding-bottom: 10px;
+}
+.cart-li{
+    margin-right: 28px;
+}

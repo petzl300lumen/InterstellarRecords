@@ -17,6 +17,7 @@ export default function RegistrationPage() {
                     <input type="password" className="reg-input" placeholder='•••••••••••••••' />
                 <button type='submit' className='reg-btn'>Зарегистрироваться</button>
                 </form>
+                
         </div>
 
     </div>
