@@ -4,6 +4,8 @@ import api from '../../logic/api';
 import Error from '../Error';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
 export default function AuthorizationPage() {
 
@@ -42,8 +44,9 @@ export default function AuthorizationPage() {
         .catch(err => {
             console.log(err.message)
             setError(err.message)
-            setLoading(false)
+            // setLoading(false)
         })
+        .finally(() => setLoading(false))
     }
 
   return (
@@ -55,15 +58,15 @@ export default function AuthorizationPage() {
                     <input type="username" 
                     value={username} 
                     onChange={(e) => setUserName(e.target.value)} 
-                    className="auth-input" placeholder='username' id='email' />
+                    className="auth-input" placeholder='username' id='email' required />
                     <label htmlFor="password" className="auth-label">Пароль</label>
                     <input type="password"
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
-                    className="auth-input" placeholder='•••••••••••••••' id='password' />
+                    className="auth-input" placeholder='•••••••••••••••' id='password' required />
                     { error && <Error error={error} />}
                     
-                <button type='submit' className='auth-btn' disabled={loading}>Войти</button>
+                <button type='submit' className='auth-btn' disabled={loading}>{loading ? <Spin indicator={<LoadingOutlined spin />} style={{ color: "#B4FED9"}} size="large" /> : "Войти"}</button>
                 </form>
         </div>
 

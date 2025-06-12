@@ -34,8 +34,8 @@ export default function Artists({artists}) {
           slidesToScroll: 1,
           autoplay: true,
           pauseOnHover: true,
-          speed: 12000,
-          autoplaySpeed: 12000,
+          speed: 11000,
+          autoplaySpeed: 11000,
         //   rtl: true,
           cssEase: "linear",
         //   nextArrow: <SampleNextArrow />,
@@ -55,6 +55,12 @@ export default function Artists({artists}) {
     const lc = artists.filter((artist) => artist.artist_name.includes('Locked Club'));
     const lilp = artists.filter((artist) => artist.artist_name.includes('Lil Peep'));
     const md = artists.filter((artist) => artist.artist_name.includes('Molchat Doma'));
+    const qeen = artists.filter((artist) => artist.artist_name.includes('Queen'));
+    const psb = artists.filter((artist) => artist.artist_name.includes('Pet Shop Boys'));
+    const sa3 = artists.filter((artist) => artist.artist_name.includes('3 Steps Ahead'));
+    const tp = artists.filter((artist) => artist.artist_name.includes('The Prodigy'));
+    const u2 = artists.filter((artist) => artist.artist_name.includes('U2'));
+    const pf = artists.filter((artist) => artist.artist_name.includes('Pink Floyd'));
   return (
     <div>
     <div className="artists-background artists-arr">
@@ -62,7 +68,6 @@ export default function Artists({artists}) {
 
         <div className='wrapper'>
         <div className="firstSlide">
-
            <div className="firstslideChildren FSC1" style={{
                   backgroundImage: `url(${BASE_URL}${partanm[0]?.image || ''})`,
                   backgroundSize: 'cover',
@@ -70,9 +75,6 @@ export default function Artists({artists}) {
                 }}>
                 <div className='div-an'> <p className='p-an'>Party Animals</p> </div>
             </div>
-            {/* {partanm.map((artist) => ( <div key={artist.id} className="firstslideChildren FSC1">
-                {<img src={`${BASE_URL}${artist.image}`} alt="Картинка" className='partyanimals'/>}
-            </div>))} */}
             <div className="firstslideChildren FSC2" style={{
                   backgroundImage: `url(${BASE_URL}${mrccdp[0]?.image || ''})`,
                   backgroundSize: 'cover',
@@ -98,10 +100,54 @@ export default function Artists({artists}) {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}><div className='div-an'> <p className='p-an'>Molchat Doma</p></div></div>
-            {/* <div className="firstslideChildren FSC7">7</div>
-            <div className="firstslideChildren FSC8">8</div> */}
         </div>
         </div>
+
+        <div className='wrapper'>
+        <div className="thirdSlide">
+            <div className="thirdslideChildren TSC1" style={{
+                  backgroundImage: `url(${BASE_URL}${pf[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>Pink Floyd</p></div></div>
+            <div className="thirdslideChildren TSC2" style={{
+                  backgroundImage: `url(${BASE_URL}${psb[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>Pet Shop Boys</p></div></div>
+            <div className="thirdslideChildren TSC3"style={{
+                  backgroundImage: `url(${BASE_URL}${u2[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>U2</p></div></div>
+            <div className="thirdslideChildren TSC4" style={{
+                  backgroundImage: `url(${BASE_URL}${sa3[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>3 Steps Ahead</p></div></div>
+            <div className="thirdslideChildren TSC5" style={{
+                  backgroundImage: `url(${BASE_URL}${tp[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>The Prodigy</p></div></div>
+            <div className="thirdslideChildren TSC6" style={{
+                  // backgroundImage: `url(${BASE_URL}${tp[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'><p className='p-an'>1</p></div></div>
+            {/* <div className="thirdslideChildren TSC7" style={{
+                  // backgroundImage: `url(${BASE_URL}${pb4[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>2</p></div></div> */}
+            {/* <div className="thirdslideChildren TSC8" style={{
+                  // backgroundImage: `url(${BASE_URL}${pb4[0]?.image || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}><div className='div-an'> <p className='p-an'>3</p></div></div> */}
+        </div>
+        </div>
+
         <div className='wrapper'>
         <div className="SecondSlide">
             <div className="secondslideChildren SSC1" style={{
@@ -134,8 +180,6 @@ export default function Artists({artists}) {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}><div className='div-an'><p className='p-an'>4 Позиции бруно</p></div></div>
-            {/* <div className="secondslideChildren SSC7">7</div> */}
-            {/* <div className="secondslideChildren SSC7">8</div> */}
         </div>
         </div>
     </Slider>    

@@ -15,6 +15,7 @@ import RegistrationPage from './components/ui/authentication/RegistrationPage';
 import AuthorizationPage from './components/ui/authentication/AuthorizationPage';
 import ProtectedRoute from './components/logic/ProtectedRoute';
 import { AuthProvider } from './components/context/AuthContext';
+import UserProfilePage from './components/ui/user/UserProfilePage';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
     if(cart_code){
       api.get(`get_cart_stat?cart_code=${cart_code}`)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setNumberCartItems(res.data.num_of_items)
       })
        .catch(err =>{
@@ -49,6 +50,7 @@ function App() {
     <Route path='/contacts' element={<Contacts />}></Route>
     <Route path='/products/:slug' element={<ProductDetail setNumberCartItems={setNumberCartItems} />}></Route>
     <Route path='*' element={<NotF404 />}></Route>
+    <Route path='/profile' element={ <ProtectedRoute><UserProfilePage /></ProtectedRoute> }></Route>
     <Route path='/checkout' element={<ProtectedRoute>  <CheckoutPage />  </ProtectedRoute> }></Route>
     <Route path='/registration' element={<RegistrationPage />}></Route>
     <Route path='/authorization' element={<AuthorizationPage />}></Route>

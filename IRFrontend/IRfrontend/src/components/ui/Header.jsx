@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '/logooo.svg';
 import cart from '/Cart.svg';
@@ -14,6 +14,7 @@ import { AuthContext } from '../context/AuthContext';
 
 export default function Header({numCartItems, setNumberCartItems}) {
 
+  const navigate = useNavigate();
   const { isAuthenticated, setIsAuthenticated} = useContext( AuthContext )
 
   function logout(){
@@ -100,7 +101,16 @@ export default function Header({numCartItems, setNumberCartItems}) {
             <div className="subtotal-p"><p className='subtotal-p-sum'>Товаров на сумму:</p><p className='subtotal-p-price'>{cartTotal} ₽</p></div>
             <div className="subtotal-p"><p className='subtotal-p-delivery'>Доставка:</p><p className='subtotal-p-price'>{delivery} ₽</p></div>
             <div className="subtotal-p"><p className='subtotal-p-total'>Итого:</p><p className='subtotal-p-price subtotal-p-price-total'>{total} ₽</p></div>
-            <Link to='/checkout'><button onClick={() => {onClose(); }} className='btn-cart-pay'>Перейти к оплате</button></Link>
+            <button onClick={() => {
+              if (cartitems.length === 0){
+                alert("Ваша корзина пуста. Для начала добавьте товар для оформления заказа")
+              }
+              else{
+                onClose();
+                navigate('/checkout');
+              }
+              onClose(); 
+              }} className='btn-cart-pay'>Перейти к оплате</button>
           </div>
         </Drawer>
           </li>  

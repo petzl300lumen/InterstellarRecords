@@ -1,0 +1,46 @@
+.OrderHistoryItem{
+    width: 591px;
+    border: 1px solid #D2D2D2;
+    border-radius: 10px;
+    padding: 9px 12px;
+}
+.order-history-p{
+    color: black;
+    font-size: 13px;
+    font-family: 'Unbounded-Light';
+
+}
+.order-history-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    margin-right: 15px;
+}
+.stat{
+    color: #B022EE;
+    font-family: 'Unbounded-SemiBold';
+}
+.ord-hist-date-sum{
+    font-size: 12px;
+}
+.ord-hist-title-quant{
+    text-decoration: underline;
+}
+.numoforder-status{
+display: flex;
+}
+.order-history-products{
+display: flex;
+justify-content: space-between;
+}
+.sum-date{
+    display: flex;
+    justify-content: space-between;
+}
+.ord-hist-cont{
+    display: flex;
+}
+.ord-hist-num-stat{
+    margin: 0;
+    margin-right: 10px;
+}
