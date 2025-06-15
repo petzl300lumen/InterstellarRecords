@@ -17,44 +17,49 @@ export default function CheckoutPage() {
                     <div className='cont-info' style={{width: 500}}>
                         <label htmlFor="" className="order-main-label">Контактная информация</label>
 
-
                         <div className='row'>
                         <label htmlFor="" className='mini-label'>E-mail <span className='spanst'>*</span>
-                        <input type="text" className='order-inputs order-inputs-medium'/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-medium'/>
                         </label>
                         
                         <label htmlFor="" className='mini-label'>Номер телефона <span className='spanst'>*</span>
-                        <input type="text" className='order-inputs order-inputs-medium'/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-medium'/>
                         </label>
                         
                         </div>
                         <label htmlFor="" className='mini-label'>ФИО <span className='spanst'>*</span></label>
-                        <input type="text" className='order-inputs order-inputs-large '/>
-
-                        
-                        
+                        <input type="text" 
+                        className='order-inputs order-inputs-large '/>
+ 
                     </div>
                     <div className='adrs-del' style={{width: 500}}>
                         <label htmlFor="" className="order-main-label">Адрес доставки</label>
 
                         <div className='row'>
                         <label htmlFor="" className='mini-label'>Индекс <span className='spanst'>*</span>
-                        <input type="text" className='order-inputs order-inputs-small'/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-small'/>
                         </label>
                         
                         <label htmlFor="" className='mini-label'>Страна <span className='spanst'>*</span>
-                        <input type="text" className='order-inputs order-inputs-small'/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-small'/>
                         </label>
 
                         <label htmlFor="" className='mini-label'>Город <span className='spanst'>*</span>
-                        <input type="text" className='order-inputs order-inputs-small'/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-small'/>
                         </label>
                         
                         </div>
                         <label htmlFor="" className='mini-label'>Адрес <span className='spanst'>*</span></label>
-                        <input type="text" className='order-inputs order-inputs-large '/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-large '/>
                         <label htmlFor="" className='mini-label'>Комментарий к заказу</label>
-                        <input type="text" className='order-inputs order-inputs-large '/>
+                        <input type="text" 
+                        className='order-inputs order-inputs-large '/>
 
                     </div>
                     <div className='pay-info' style={{width: 500}}>

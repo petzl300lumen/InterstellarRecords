@@ -69,3 +69,29 @@ class CartItem(models.Model):
     
     def __str__ (self):
         return f"{self.quantity} x {self.product.title} in cart {self.cart.id}"
+    
+class Statuses(models.Model):
+    status_name = models.CharField(max_length=50)    
+    
+    def __str__ (self):
+        return self.status_name
+
+class Orders(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
+    status = models.ForeignKey(Statuses, on_delete=models.CASCADE, default=1)
+    order_code = models.CharField(max_length=7, unique=True)
+    info = models.TextField(max_length=700)
+    date = models.DateField(auto_now_add=True,blank=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    amount = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.order_code
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Orders, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    
+    def __str__ (self):
+        return f"{self.quantity} x {self.product.title} in cart {self.order.order_code}"

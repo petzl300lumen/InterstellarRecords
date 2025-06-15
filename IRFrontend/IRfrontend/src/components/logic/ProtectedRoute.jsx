@@ -53,7 +53,7 @@ export default function ProtectedRoute({children}) {
     }
 
     if(isAuthorized === null){
-      return <Spin indicator={<LoadingOutlined style={{ fontSize: 90, color: 'gray' }} spin />} />
+      return <Spin indicator={<LoadingOutlined style={{ fontSize: 90, color: 'white', margin:"100px 500px" }} spin />} />
     }
     
 

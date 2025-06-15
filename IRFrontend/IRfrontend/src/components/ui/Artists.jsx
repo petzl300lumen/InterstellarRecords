@@ -61,6 +61,7 @@ export default function Artists({artists}) {
     const tp = artists.filter((artist) => artist.artist_name.includes('The Prodigy'));
     const u2 = artists.filter((artist) => artist.artist_name.includes('U2'));
     const pf = artists.filter((artist) => artist.artist_name.includes('Pink Floyd'));
+    const tc = artists.filter((artist) => artist.artist_name.includes('The Cure'));
   return (
     <div>
     <div className="artists-background artists-arr">
@@ -131,10 +132,10 @@ export default function Artists({artists}) {
                   backgroundPosition: 'center',
                 }}><div className='div-an'> <p className='p-an'>The Prodigy</p></div></div>
             <div className="thirdslideChildren TSC6" style={{
-                  // backgroundImage: `url(${BASE_URL}${tp[0]?.image || ''})`,
+                  backgroundImage: `url(${BASE_URL}${tc[0]?.image || ''})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                }}><div className='div-an'><p className='p-an'>1</p></div></div>
+                }}><div className='div-an'><p className='p-an'>The Cure</p></div></div>
             {/* <div className="thirdslideChildren TSC7" style={{
                   // backgroundImage: `url(${BASE_URL}${pb4[0]?.image || ''})`,
                   backgroundSize: 'cover',
