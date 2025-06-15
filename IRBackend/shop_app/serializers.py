@@ -77,3 +77,19 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ['id', 'username', 'email']
+        
+        
+        
+        
+class OrderItemSerializer(serializers.ModelSerializer):
+    product = ProductsSerializer(read_only=True)
+    class Meta:
+        model = OrderItem
+        fields = ['id', 'product', 'quantity']
+
+class OrdersSerializer(serializers.ModelSerializer):
+    items = OrderItemSerializer(many=True, read_only=True)
+    status = serializers.StringRelatedField()
+    class Meta:
+        model = Orders
+        fields = ['id', 'order_code', 'status', 'info', 'date', 'amount', 'items']

@@ -18,4 +18,7 @@ urlpatterns = [
     path('delete_cartitem/', views.delete_cartitem, name="delete_cartitem"), 
     path('user_info', views.user_info, name="user_info"), 
     path('register/', RegisterView.as_view(), name='register'),
+    
+    path('create_order/', create_order, name='create_order'),
+    path('order_history/', order_history, name='order_history'),
 ]

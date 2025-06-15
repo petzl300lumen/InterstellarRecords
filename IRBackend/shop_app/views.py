@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import random
 from rest_framework.decorators import api_view, permission_classes
 from .models import *
 from .serializers import *
@@ -125,3 +126,50 @@ class RegisterView(APIView):
 
         user = User.objects.create_user(username=username, email=email, password=password)
         return Response({'message': 'Пользователь успешно зарегистрирован'}, status=status.HTTP_201_CREATED)
+    
+    
+    
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_order(request):
+    user = request.user
+    cart_code = request.data.get("cart_code")
+    info = request.data.get("info", "")
+    cart = Cart.objects.get(cart_code=cart_code, paid=False)
+    status = Statuses.objects.get(pk=1)  # "Сформирован" по умолчанию
+
+    user_id = user.id if user else 0
+    rand_digits = ''.join([str(random.randint(0, 9)) for _ in range(4)])
+    order_code = f"{user_id}-{rand_digits}"
+
+    amount = sum([item.product.price * item.quantity for item in cart.items.all()])
+
+    order = Orders.objects.create(
+        user=user,
+        status=status,
+        order_code=order_code,
+        info=info,
+        amount=amount
+    )
+
+    for item in cart.items.all():
+        OrderItem.objects.create(
+            order=order,
+            product=item.product,
+            quantity=item.quantity
+        )
+
+    cart.items.all().delete()
+    cart.paid = True
+    cart.save()
+
+    return Response({'message': 'Заказ оформлен', 'order_code': order_code}, status=201)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def order_history(request):
+    orders = Orders.objects.filter(user=request.user).order_by('-date')
+    serializer = OrdersSerializer(orders, many=True)
+    return Response(serializer.data)
