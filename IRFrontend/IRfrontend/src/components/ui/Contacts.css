@@ -1,0 +1,61 @@
+.backrndDivContacts{
+    width: 100%;
+    height: 800px;
+    background-image: url(../../../public/ContactsBckgr.svg);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.contacts-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 318px; */
+    margin-top: 120px;
+    
+}
+.cont-h1 {
+ font-family: "RubikMonoOne";
+ font-size: 46px;
+ color: white;
+ margin: 0;
+}
+
+.cont-p{
+    font-size: 15px;
+    color: #B4FED9;
+    width: 326px;
+    margin: 0;
+
+}
+.social-card{
+    background-color: white;
+    width: 293px;
+    height: 106px;
+    border-radius: 15px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+        transition: 0.4s;
+}
+
+.social-card:hover{
+    transform: translate(0px, -10px);
+    
+}
+
+.social-cards{
+        display: flex;
+        justify-content: center;
+    width: 800px;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 20px;
+    
+    
+    
+}
