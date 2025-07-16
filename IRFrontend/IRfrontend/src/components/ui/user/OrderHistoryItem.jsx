@@ -4,6 +4,19 @@ import im from '/image.png'
 import { BASE_URL } from '../../logic/api';
 
 export default function OrderHistoryItem({order}) {
+
+
+  return (
+    <div className='OrderHistoryItem'>
+            <div className='numoforder-status'><p className='order-history-p ord-hist-num-stat'>Заказ № </p> <p className='order-history-p ord-hist-num-stat'><span className='stat'>Статус:</span> {}</p></div>
+            
+  
+            <div className='sum-date'><p className='order-history-p  ord-hist-date-sum'>Cумма: {} ₽</p> <p className='order-history-p ord-hist-date-sum'>Дата: {}</p></div>
+    </div>
+  )
+
+
+  /* Баганные заказы
   return (
     <div className='OrderHistoryItem'>
             <div className='numoforder-status'><p className='order-history-p ord-hist-num-stat'>Заказ № {order.order_code}</p> <p className='order-history-p ord-hist-num-stat'><span className='stat'>Статус:</span> {order.status}</p></div>
@@ -20,4 +33,5 @@ export default function OrderHistoryItem({order}) {
             <div className='sum-date'><p className='order-history-p  ord-hist-date-sum'>Cумма: {order.amount} ₽</p> <p className='order-history-p ord-hist-date-sum'>Дата: {order.date}</p></div>
     </div>
   )
+    */
 }

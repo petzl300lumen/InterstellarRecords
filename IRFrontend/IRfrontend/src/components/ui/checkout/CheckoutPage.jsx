@@ -35,15 +35,15 @@ export default function CheckoutPage() {
             Комментарий: ${comment}
         `;
 
-        try {
-            const res = await api.post('/create_order/', {
-                cart_code: localStorage.getItem('cart_code'),
-                info: info
-            });
-                        // Можно очистить корзину, показать сообщение, редирект и т.д.
-        } catch (err) {
-            alert('Ошибка оформления заказа');
-        }
+        // try {
+        //     const res = await api.post('/create_order/', {
+        //         cart_code: localStorage.getItem('cart_code'),
+        //         info: info
+        //     });
+        //                 // Можно очистить корзину, показать сообщение, редирект и т.д.
+        // } catch (err) {
+        //     alert('Ошибка оформления заказа');
+        // }
 
  }
 

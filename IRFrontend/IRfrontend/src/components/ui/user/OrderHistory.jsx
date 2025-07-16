@@ -6,14 +6,15 @@ import api from '../../logic/api';
 
 export default function OrderHistory() {
 
+  // баги
 
-  const [orders, setOrders] = useState([]);
+  // const [orders, setOrders] = useState([]);
 
-    useEffect(() => {
-        api.get('/order_history/')
-            .then(res => setOrders(res.data))
-            .catch(() => setOrders([]));
-    }, []);
+  //   useEffect(() => {
+  //       api.get('/order_history/')
+  //           .then(res => setOrders(res.data))
+  //           .catch(() => setOrders([]));
+  //   }, []);
 
 
 
@@ -22,11 +23,12 @@ export default function OrderHistory() {
     <div className='orderhistory'>
         <div className="order-head"><h2 className='order-head-h2'>История заказов</h2></div>
         <div className="order-history-main">
-            
-          {orders.length === 0 && <div>Нет заказов</div>}
+             Нет заказов
+            {/* баги */}
+          {/* {orders.length === 0 && <div>Нет заказов</div>}
                 {orders.map(order => (
                     <OrderHistoryItem key={order.id} order={order} />
-                ))}
+                ))} */}
 
         </div>
     </div>

@@ -19,6 +19,6 @@ urlpatterns = [
     path('user_info', views.user_info, name="user_info"), 
     path('register/', RegisterView.as_view(), name='register'),
     
-    path('create_order/', create_order, name='create_order'),
-    path('order_history/', order_history, name='order_history'),
+    # path('create_order/', create_order, name='create_order'),
+    # path('order_history/', order_history, name='order_history'),
 ]

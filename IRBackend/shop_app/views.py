@@ -128,7 +128,8 @@ class RegisterView(APIView):
         return Response({'message': 'Пользователь успешно зарегистрирован'}, status=status.HTTP_201_CREATED)
     
     
-    
+    # Баганная функция заказа
+"""
     
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -173,3 +174,5 @@ def order_history(request):
     orders = Orders.objects.filter(user=request.user).order_by('-date')
     serializer = OrdersSerializer(orders, many=True)
     return Response(serializer.data)
+    
+    """

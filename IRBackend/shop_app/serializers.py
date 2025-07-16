@@ -79,7 +79,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email']
         
         
-        
+ 
         
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductsSerializer(read_only=True)
