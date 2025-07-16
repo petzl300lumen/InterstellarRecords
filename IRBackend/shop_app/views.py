@@ -8,6 +8,9 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
+from django.conf import settings
+BASE_URL = settings.REACT_BASE_URL
+
 
 @api_view(['GET'])
 def products(request):
