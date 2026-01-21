@@ -6,7 +6,8 @@
 + Бэкэнд: Python | Django | Django REST framework | Simple JWT
 + Фронтенд: ReactJS | Vite | Axios
 + Дизайн: Figma
-  
-* Архитектура проекта в папке* ```/docs```
+ 
 
  🌐 **Сайт доступен по ссылке:** *[https://interstellar-records.onrender.com/](https://interstellar-records.onrender.com/)*
+
+* Архитектура проекта в папке * ```/docs```
