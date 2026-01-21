@@ -7,7 +7,7 @@
 + Фронтенд: ReactJS | Vite | Axios
 + Дизайн: Figma
  
+_Архитектура проекта в папке_ ```/docs```
 
  🌐 **Сайт доступен по ссылке:** *[https://interstellar-records.onrender.com/](https://interstellar-records.onrender.com/)*
 
-* Архитектура проекта в папке * ```/docs```
